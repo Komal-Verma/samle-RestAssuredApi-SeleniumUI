@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" total="1" passed="1">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Suite" duration-ms="4901" started-at="2022-07-27T09:45:10Z" finished-at="2022-07-27T09:45:15Z">
+    <groups>
+    </groups>
+    <test name="Test" duration-ms="4901" started-at="2022-07-27T09:45:10Z" finished-at="2022-07-27T09:45:15Z">
+      <class name="com.sample.apitest.APITestPetStore">
+        <test-method status="PASS" signature="petInfo()[pri:0, instance:com.sample.apitest.APITestPetStore@1807f5a7]" name="petInfo" is-config="true" duration-ms="10" started-at="2022-07-27T15:15:11Z" finished-at="2022-07-27T15:15:11Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- petInfo -->
+        <test-method status="PASS" signature="addPetAndVerify()[pri:0, instance:com.sample.apitest.APITestPetStore@1807f5a7]" name="addPetAndVerify" duration-ms="4873" started-at="2022-07-27T15:15:11Z" finished-at="2022-07-27T15:15:15Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- addPetAndVerify -->
+      </class> <!-- com.sample.apitest.APITestPetStore -->
+    </test> <!-- Test -->
+  </suite> <!-- Suite -->
+</testng-results>
