@@ -15,6 +15,7 @@ public class HomeUIPageElements
 	
 	public By progressBar = By.id("progressBar");
     
+	//used xpath to slow the object identification process
 	public By resultTag =  By.xpath("//p[@id='result']");	
     
 }
