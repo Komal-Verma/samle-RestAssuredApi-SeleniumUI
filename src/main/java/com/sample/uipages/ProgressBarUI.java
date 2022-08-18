@@ -1,4 +1,4 @@
-package com.sample.uitestinghomepage;
+package com.sample.uipages;
 
 import static org.testng.Assert.assertTrue;
 
@@ -11,10 +11,9 @@ import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Wait;
 
 import com.sample.base.BasePage;
-import com.sample.base.BaseTest;
 
 public class ProgressBarUI extends BasePage {
-	
+
 	// page elements
 	public By button(String buttonText) {
 		return By.id(buttonText.toLowerCase() + "Button");
@@ -26,37 +25,18 @@ public class ProgressBarUI extends BasePage {
 
 	// step Methods
 	public void clickOnStartOrStopButton(String buttonName) {
-		try {
-
-			driver.findElement(button(buttonName)).click();
-
-		} catch (Exception e) {
-			System.out.println(e.getMessage());
-		}
+		driver.findElement(button(buttonName)).click();
 	}
 
 	public void verifyResult(String resultValue) {
-		try {
-
-			assertTrue(driver.findElement(resultTag).getText().startsWith("Result: " + resultValue));
-
-		} catch (Exception e) {
-			System.out.println(e.getMessage());
-		}
+		assertTrue(driver.findElement(resultTag).getText().startsWith("Result: " + resultValue));
 	}
 
 	public void waitUntilStatusValue(String statusValue) {
-		try {
-			System.out.println(BasePage.getText(resultTag));
+		Wait<WebDriver> wait;
+		wait = new FluentWait<WebDriver>(driver).withTimeout(Duration.ofSeconds(30)).pollingEvery(Duration.ofMillis(5));
+		wait.until(ExpectedConditions.attributeToBe(driver.findElement(progressBar), "aria-valuenow", statusValue));
 
-			Wait<WebDriver> wait;
-			wait = new FluentWait<WebDriver>(driver).withTimeout(Duration.ofSeconds(30))
-					.pollingEvery(Duration.ofMillis(5));
-			wait.until(ExpectedConditions.attributeToBe(driver.findElement(progressBar), "aria-valuenow", statusValue));
-
-		} catch (Exception e) {
-			System.out.println(e.getMessage());
-		}
 	}
 
 }

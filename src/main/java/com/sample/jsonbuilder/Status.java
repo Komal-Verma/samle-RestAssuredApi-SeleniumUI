@@ -2,18 +2,16 @@ package com.sample.jsonbuilder;
 
 public enum Status {
 
-    available("available"),
-    pending("pending"),
-    sold("sold");
+	available("available"), pending("pending"), sold("sold");
 
-    private String value;
+	private String value;
 
-    Status(String value) {
-        this.value = value;
-    }
+	Status(String value) {
+		this.value = value;
+	}
 
-    @Override
-    public String toString() {
-        return String.valueOf(value);
-    }
+	@Override
+	public String toString() {
+		return String.valueOf(value);
+	}
 }

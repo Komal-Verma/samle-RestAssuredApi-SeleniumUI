@@ -1,7 +1,6 @@
 package com.sample.base;
 
 import java.time.Duration;
-import java.util.Random;
 
 import org.apache.commons.lang3.RandomStringUtils;
 import org.openqa.selenium.By;

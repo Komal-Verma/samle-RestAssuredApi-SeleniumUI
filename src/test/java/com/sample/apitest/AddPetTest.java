@@ -4,7 +4,9 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-import com.sample.base.BaseTest;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonMappingException;
+
 import com.sample.jsonbuilder.Pet;
 import com.sample.jsonbuilder.PetsRequest;
 import com.sample.lib.Excel;
@@ -16,32 +18,28 @@ import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.List;
 
-import org.testng.Assert;
-
-public class AddPetTest extends BaseTest{
+public class AddPetTest {
 
 	PetsRequest petsRequest;
 	String baseUri = "https://petstore.swagger.io/v2/pet";
-	
+
 	@BeforeMethod
 	public void beforeMethod() {
 		petsRequest = new PetsRequest();
 	}
 
 	@Test(dataProvider = "AddPetData")
-	public void addNewPetAndVerify(LinkedHashMap<String, String> testData) {	
+	public void addNewPetAndVerify(LinkedHashMap<String, String> testData) throws JsonMappingException, JsonProcessingException {
 
 		Pet pet = petsRequest.createPetObject(testData);
 
 		Response petPostResponse = petsRequest.addNewPet(baseUri, pet);
-		
+
 		String petId = petPostResponse.getBody().jsonPath().getString("id");
 
 		Response petGetResponse = petsRequest.searchPetById(baseUri, petId);
-
-		String petName = petGetResponse.getBody().jsonPath().getString("name");
-
-		Assert.assertEquals(petName, pet.getName());
+		
+		petsRequest.compareResponse(petPostResponse, petGetResponse);
 
 	}
 
